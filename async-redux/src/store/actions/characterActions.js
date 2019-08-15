@@ -7,10 +7,10 @@ export const FETCH_CHARACTORDATA_FAILURE =  'FETCH_CHARACTORDATA_FAILURE'
 export const getResponse = () => {
     return dispach => {
         dispach({ type : FETCH_CHARACTORDATA_START});
-       const results =  axios.get(`https://rickandmortyapi.com/api/character/`)
+       const results = axios.get(`https://rickandmortyapi.com/api/character/`)
        results.then(res => {
-           console.log(res.data.results);
-           dispach({type: FETCH_CHARACTORDATA_SUCCESS , payload: res.data.results})
+           console.log(res.data);
+           dispach({type: FETCH_CHARACTORDATA_SUCCESS , payload: res.data})
            
        })
        .catch(error => {
