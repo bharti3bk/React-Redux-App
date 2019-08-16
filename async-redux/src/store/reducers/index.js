@@ -5,8 +5,7 @@ FETCH_CHARACTORDATA_FAILURE} from '../actions'
 
 const initialState = {
     charactorArray: [] ,
-    isLoading: false, 
-
+    isLoading: false
 }  
 
 export const reducer = (state = initialState , action) => {
@@ -20,7 +19,8 @@ export const reducer = (state = initialState , action) => {
         case FETCH_CHARACTORDATA_SUCCESS :
             return {
                ...state,
-               isLoading : false
+               isLoading : false,
+               charactorArray: [...action.payload]
             }  
         default: 
         return state;

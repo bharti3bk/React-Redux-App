@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner'; 
 import { getResponse }  from '../store/actions'
 
-
-export default function CharacterList(props) { 
-    console.log(props)
+function CharacterList({isLoading, charactorArray, getResponse }) { 
+    console.log(isLoading)
+    console.log(charactorArray)
+    console.log(getResponse)
     return (
         <section className="character-list grid-view">
-            <button onClick = {props.getResponse}>  
-          {props.isLoading ? (<Loader type ='Plane' color ='black'/>):('Get Charactors Info')}</button>
-          {props.charactorArray && props.charactorArray.map(character => <CharacterCard  data={character} />)}
+            <button onClick = {getResponse}>  
+          {isLoading ? (<Loader type ='Plane' color ='black'/>):('Get Charactors Info')}</button>
+          {charactorArray && charactorArray.map(character => <CharacterCard  data={character} />)}
         </section>
       ); 
 }     
@@ -22,4 +23,5 @@ const maspStateToProps = (state) => {
         charactorArray : state.charactorArray
     }
 } 
-connect(maspStateToProps , {getResponse})(CharacterList)
+
+export default connect(maspStateToProps , {getResponse})(CharacterList)
